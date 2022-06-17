@@ -19,28 +19,29 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
-
-		try (OutputStream out = new FileOutputStream (file)){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                //Rasimindi kocurmuyun 
-			String a = "s";
-			out.write("BMW\n".getBytes());
-			out.write("BMW M5\n".getBytes());
-			out.write("BMW M760\n".getBytes());
-			out.write("BMW M5 CS\n".getBytes());
-			out.write("BMW M3 E36\n".getBytes());
-			
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
 		try {
-			Scanner sc=new Scanner(file);
-			for(int i=0;i<6;i++) {
-				System.out.println(sc.nextLine());
-			}
+			BufferedOutputStream boS = new BufferedOutputStream(new FileOutputStream(file));                                                                                                                                                                                                                                                                                                                                           //Rasimindi kocurmuyun 
+			boS.write("Azerbaijan\n".getBytes());
+			boS.write("Qusar\n".getBytes());
+			boS.write("Germany\n".getBytes());
+			boS.write("Russia\n".getBytes());
+			boS.write("Turkey".getBytes());
 			
-			
-		}catch (FileNotFoundException e) {
+		
+			boS.flush();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		try {
+			BufferedInputStream bIS = new BufferedInputStream(new FileInputStream(file));
+			for (int i = 0; i < 38; i++) {
+				char ch = (char) bIS.read();
+				System.out.println(ch);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		
 		
 		
